@@ -1,0 +1,36 @@
+
+<% if @photo.file.attached? %>
+  <%= image_tag @photo.file %>
+<% else %>
+  <%= image_tag 'placeholder.png'%>
+<% end %>
+<br>
+<%= @photo.caption %>
+<%= link_to @photo, method: :delete, data: { confirm: 'Are you sure?'} do %>
+<i class="fas fa-trash-alt"></i>
+<% end %>
+<br>
+<p>Posted by: <%= @photo.user.email %></p>
+
+
+
+  <%= form_for ([@photo, @comment]) do |form| %>
+    <%= form.text_area :body, placeholder: 'Add comment here' %><br>
+    <%= form.submit %><br>
+    <% end %>
+
+<% if @photo.comments.any? %>
+  <ul>
+    <% @photo.comments.each do |comment| %>
+      <li style='color:green;'><%= comment.body %></li>
+      <%= link_to @photo_comment_path, method: :delete, data: { confirm: 'Are you sure?'} do %>
+      <i class="fas fa-trash-alt"></i>
+      <% end %>
+      <% end %>
+    </ul>
+
+    <% else %>
+      <p>No comment yet.</p>
+    <% end %>
+    <br>
+<%= link_to 'Home', root_path %>

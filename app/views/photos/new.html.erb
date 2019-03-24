@@ -1,0 +1,9 @@
+<%= form_for @photo, action: "save" do |form| %>
+  <%= form.label :file %>
+  <%= form.file_field :file %>
+<br>
+  <%= form.label :caption %>
+  <%= form.text_field :caption %>
+<br>
+  <%= form.submit %>
+<% end %>

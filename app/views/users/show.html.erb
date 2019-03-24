@@ -1,0 +1,19 @@
+Signed in as <%= @user.email %>
+
+<section class="row">
+  <section class="col-md-4">
+      <% @photo.each do |photo|%><br>
+        <% if photo.file.attached? %>
+          <%= image_tag photo.file %>
+        <% else %>
+          <%= image_tag 'placeholder.png' %>
+        <% end %>
+        <br>
+        <%= photo.caption %>
+        <%= link_to photo_path(photo), method: :delete, data: { confirm: 'Are you sure?'} do %>
+        <i class="fas fa-trash-alt"></i><br>
+
+        <% end %>
+      <% end %>
+  </section>
+</section>

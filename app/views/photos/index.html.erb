@@ -1,0 +1,11 @@
+<% if @photos.try:any? %>
+<ul>
+  <%= @photos.each do |photo| %>
+    <li><%= link_to photo.caption, photo_path(photo) %></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>No records found.</p>
+<% end %>
+<br>
+<%= link_to 'New Photo', new_photo_path %>

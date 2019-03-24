@@ -1,0 +1,17 @@
+
+
+
+<h1 style="color: green;">
+  Greetings! I'm Instagram_Clone</h1>
+<p>Join us to share photos of you with your friends.</p>
+
+<% if current_user %>
+  <p>Logged in as <%= link_to current_user.email, user_path(current_user) %></p>
+  <%= link_to "My Photos", photos_path %>
+<br><br>
+  <%= link_to 'Logout', logout_path %>
+
+<% else %>
+  <p>Already a member? <%= link_to 'Login', login_path %></p>
+  <p>Not yet registered? <%= link_to 'Sign up', signup_path %></p>
+<% end %>
